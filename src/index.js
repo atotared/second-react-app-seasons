@@ -10,7 +10,7 @@ class App extends React.Component {
     // console.log(this.state); => OUTPUT: {lat: null}
   } */
   // Thanks to Babel, the above constructor is equivalent to:
-  state = { lat: null };
+  state = { lat: null, errorMessage: "" };
 
   // React's best practices say it's preferrable to place data loading code inside componentDidMount()
   // instead of the constructor (data loading that we want to perform just once)
@@ -35,6 +35,7 @@ class App extends React.Component {
 
   render() {
     if (!this.state.errorMessage && this.state.lat) {
+      console.log(this);
       return <SeasonDisplay lat={this.state.lat}></SeasonDisplay>; // Take state of parent component and pass it as a prop to a child
     } else if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
