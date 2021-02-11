@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
+import Spinner from "./Spinner";
+import index from "./index.css";
 
 class App extends React.Component {
   /* constructor(props) {
@@ -33,15 +35,21 @@ class App extends React.Component {
     console.log("This is used for cleanup.");
   }
 
-  render() {
+  // This is a helper function (a class method/property of App);
+  renderContent() {
     if (!this.state.errorMessage && this.state.lat) {
       console.log(this);
       return <SeasonDisplay lat={this.state.lat}></SeasonDisplay>; // Take state of parent component and pass it as a prop to a child
     } else if (this.state.errorMessage && !this.state.lat) {
       return <div>Error: {this.state.errorMessage}</div>;
     } else {
-      return <div>Loading!</div>;
+      return <Spinner message={"Waiting for your permission..."} />;
     }
+  }
+
+  render() {
+    // renderContent() is called with this because it's a property method of App component
+    return <div className="border white">{this.renderContent()}</div>;
   }
 }
 
