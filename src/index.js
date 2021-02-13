@@ -2,7 +2,8 @@ import React from "react";
 import ReactDOM from "react-dom";
 import SeasonDisplay from "./SeasonDisplay";
 import Spinner from "./Spinner";
-import index from "./index.css";
+import Clock from "./Clock";
+// import index from "./index.css";
 
 class App extends React.Component {
   /* constructor(props) {
@@ -49,7 +50,12 @@ class App extends React.Component {
 
   render() {
     // renderContent() is called with this because it's a property method of App component
-    return <div className="border white">{this.renderContent()}</div>;
+    return (
+      <>
+        <Clock />
+        <div className="border white">{this.renderContent()}</div>;
+      </>
+    );
   }
 }
 
